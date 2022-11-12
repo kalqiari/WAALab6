@@ -29,12 +29,12 @@ public class PostServiceImp implements PostService {
     ModelMapper modelMapper;
 
     @Autowired
-    ListMapper listMapper;
+    ListMapper<Post, PostDto> listMapper;
 
     @Override
     public List<PostDto> findAll() {
         var posts = postRepo.findAll();
-        return listMapper.mapList(posts, PostDto.class);
+        return (List<PostDto>) listMapper.mapList(posts, new PostDto());
     }
 
     @Override
@@ -46,7 +46,7 @@ public class PostServiceImp implements PostService {
     @Override
     public List<PostDto> findByTitle(String title) {
         var posts = postRepo.findByTitle(title);
-        return listMapper.mapList(posts, PostDto.class);
+        return (List<PostDto>) listMapper.mapList(posts, new PostDto());
     }
 
     @Override
@@ -68,13 +68,13 @@ public class PostServiceImp implements PostService {
     @Override
     public List<PostDto> findByAuthor(String author) {
         var posts = postRepo.findByAuthor(author);
-        return listMapper.mapList(posts, PostDto.class);
+        return (List<PostDto>) listMapper.mapList(posts, new PostDto());
     }
 
     @Override
     public List<PostDto> findByUserId(long userId) {
         var posts = postRepo.findByUserId(userId);
-        return listMapper.mapList(posts, PostDto.class);
+        return (List<PostDto>) listMapper.mapList(posts, new PostDto());
     }
 
     @Override
@@ -98,7 +98,7 @@ public class PostServiceImp implements PostService {
     @Override
     public List<PostDto> findByAuthorAndTitle(String author, String title) {
         if(author != null && title != null)
-            return listMapper.mapList(postRepo.findByAuthorAndTitle(author, title), PostDto.class);
+            return (List<PostDto>) listMapper.mapList(postRepo.findByAuthorAndTitle(author, title), new PostDto());
         else if(author != null)
             return findByAuthor(author);
         else
