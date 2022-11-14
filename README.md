@@ -14,7 +14,7 @@ This application was built with spring-boot and enabled token-based authenticati
 
 ## Group Members:
 - ### Alkhadher Alqiari
-- ### Selam Mehari
+- ### Selamawit Habte
 - ### Luwam Weldemichael
 - ### Henok Michael
 
